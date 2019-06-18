@@ -138,6 +138,9 @@ class DoublyLinkedList:
     if node.prev and node.next:
       node.prev.next = node.next
       node.next.prev = node.prev
+    elif node.prev:
+      node.prev.next = None
+      self.tail = node.prev
     self.add_to_head(node, True)
 
   def move_to_end(self, node):
@@ -145,6 +148,9 @@ class DoublyLinkedList:
       print('swapping values')
       node.prev.next = node.next
       node.next.prev = node.prev
+    elif node.next:
+      node.next.prev = None
+      self.head = node.next
     self.add_to_tail(node, True)
 
   def delete(self, node):
